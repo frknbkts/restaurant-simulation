@@ -1,0 +1,59 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Yazlab13"
+        xmlns:hc="https://handyorg.github.io/handycontrol" x:Class="Yazlab13.Problem2"
+        mc:Ignorable="d"
+        Title="Problem2" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <DataGrid x:Name="dataGrid" ItemsSource="{Binding}" ColumnWidth="*" Grid.ColumnSpan="7" Grid.Column="0" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Masa" Binding="{Binding tableNum}"  />
+                <DataGridTextColumn Header="Garson" Binding="{Binding waiterNum}" />
+                <DataGridTextColumn Header="Aşcı" Binding="{Binding cookNum}" />
+                <DataGridTextColumn Header="Müşteri" Binding="{Binding clientNum}" />
+                <DataGridTextColumn Header="Kazanç" Binding="{Binding profit}" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label Content="Süre"  Grid.Row="1" HorizontalAlignment="Center" Grid.ColumnSpan="7" />
+        <hc:NumericUpDown x:Name="duration" Grid.Row="2" HorizontalAlignment="Center" Value="30" Minimum="0" Grid.ColumnSpan="7"/>
+        <GroupBox Header="Model" Grid.Row="3" Grid.RowSpan="2" Grid.ColumnSpan="7" HorizontalAlignment="Stretch">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <RadioButton x:Name="constantRadioButton" Content="Sabit" Checked="constantRadioButton_Checked" IsChecked="True"/>
+                <RadioButton x:Name="randomRadioButton" Content="Random" Checked="randomRadioButton_Checked"/>
+            </StackPanel>
+        </GroupBox>
+        <Button x:Name="calculateButton" Grid.Column="3" Content="Hesapla" Grid.Row="6" Click="calculateButton_Click" />
+        <StackPanel x:Name="modelOptionsPanel" Grid.Row="5" Grid.ColumnSpan="7" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Label Content="Her"></Label>
+            <hc:NumericUpDown x:Name="rateSeconds" Value="5" Minimum="0" />
+            <Label Content="saniye"></Label>
+            <hc:NumericUpDown x:Name="normalClientNum" Value="4" Minimum="0" />
+            <Label Content="normal müşteri"></Label>
+            <hc:NumericUpDown x:Name="vipClientNum" Value="1" Minimum="0" />
+            <Label Content="öncelikle müşteri gelir"></Label>
+        </StackPanel>
+        <ProgressBar Grid.Column="2" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" Height="10" Grid.Row="7" VerticalAlignment="Center" Name="progress"/>
+    </Grid>
+</Window>

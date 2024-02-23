@@ -1,0 +1,56 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Yazlab13"
+        xmlns:hc="https://handyorg.github.io/handycontrol" x:Class="Yazlab13.Problem1"
+        mc:Ignorable="d"
+        Title="Problem1" Height="722" Width="823">
+    <Grid Margin="0,0,10,10" ScrollViewer.CanContentScroll="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <DataGrid x:Name="dataGrid" ItemsSource="{Binding}" AutoGenerateColumns="False" ColumnWidth="*" Grid.ColumnSpan="8" Grid.Row="0" VerticalAlignment="Top">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Durum" Binding="{Binding state}"  />
+                <DataGridTextColumn Header="Öncelikli Mi" Binding="{Binding priorityString}" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Label Content="Adım" Grid.Row="1"/>
+        <Label x:Name="step" Content="step" Grid.Column="4" Grid.Row="1"/>
+        <Label Content="Müşteriler" Grid.Row="2"/>
+        <Label x:Name="clients" Content="clients" Grid.Column="4" Grid.Row="2"/>
+
+        <Label Content="Masalar" Grid.Row="3" Grid.Column="2"/>
+        <hc:NumericUpDown x:Name="tables" Value="6" Grid.Row="4" Grid.Column="2" Minimum="0"/>
+        <Label Content="Garsonlar" Grid.Row="3" Grid.Column="3"/>
+        <hc:NumericUpDown x:Name="waiters" Value="3" Grid.Row="4" Grid.Column="3" Minimum="0"/>
+        <Label Content="Aşçılar" Grid.Row="3" Grid.Column="4"/>
+        <hc:NumericUpDown x:Name="cooks" Value="2" Grid.Column="4" Grid.Row="4" Minimum="0"/>
+        <Label Content="Kasalar" Grid.Column="5" Grid.Row="3"/>
+        <hc:NumericUpDown x:Name="cashiers" Value="1" Grid.Column="5" Grid.Row="4" Minimum="0"/>
+
+        <Button x:Name="startButton" Content="Başla" Click="startButton_Click" Grid.Column="3" Grid.Row="6"/>
+        <Button x:Name="nextButton" Content="Sonraki Adım" IsEnabled="False" Click="nextButton_Click" Grid.Column="4" Grid.Row="7"/>
+
+    </Grid>
+</Window>
